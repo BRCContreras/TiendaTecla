@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Tecla Tienda Online</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="/front-end/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/front-end/assets/dist/css/bootstrap.modify-checkout.css">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img onclick="inicio()" class="d-block mx-auto mb-4" src="/front-end/assets/icons/cart-icon.png" alt="" width="96" height="99">
+      <h2>Checkout Tecla-Do Libre</h2>
+      <p class="lead">Dale un vistazo a tu carrito de compras antes de pagar.</p>
+    </div>
+    
+        
+      
+      
+    <div class="compras">
+      
+      <div >
+        <div class="posicion">
+          <h4 id="articulos-agregados" class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Tu carrito</span>
+            <span class="badge bg-secondary rounded-pill numero-articulos"></span>
+          </h4>
+          <div class="">
+              <div id="carrito">
+              <table id="lista-carrito" class="table">
+                  <thead>
+                      <tr>
+                          <th>Imagen</th>
+                          <th>Nombre</th>
+                          
+                          <th>Precio</th>
+                          <th>Cantidad</th>
+                          <th>Sub-Total</th>
+                          <th></th>
+                      </tr>
+                  </thead>
+                  <tbody></tbody>
+                  <tr>
+                    <th colspan="4" scope="col" class="text-right">SUB TOTAL :</th>
+                    <th scope="col">
+                        <p id="subtotal"></p>
+                    </th>
+                    <!-- <th scope="col"></th> -->
+                </tr>
+                <tr>
+                    <th colspan="4" scope="col" class="text-right">IVA :</th>
+                    <th scope="col">
+                        <p id="iva"></p>
+                    </th>
+                    <!-- <th scope="col"></th> -->
+                </tr>
+                <tr>
+                    <th colspan="4" scope="col" class="text-right">TOTAL :</th>
+                    <th scope="col">
+                        <p id="total"></p>
+                    </th>
+                    <!-- <th scope="col"></th> -->
+                </tr>
+              </table>
+
+             
+              </div>
+              
+          </div>
+         
+      </div>
+
+       
+      </div>
+      <div class="">
+        <h4 class="mb-3">Dirección de envío</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Nombre (s)</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Nombre (s) es un campo obligatorio.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Apellidos</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Apellidos es un campo obligatorio.
+              </div>
+            </div>
+
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email <span class="text-muted">(Opcional)</span></label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                Por favor ingresa una dirección de correo válida.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Dirección</label>
+              <input type="text" class="form-control" id="address" placeholder="Av. de los Insurgentes 576 " required>
+              <div class="invalid-feedback">
+                Por favor ingresar una dirección de envío.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address2" class="form-label">Dirección  <span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="Departamento o condominio">
+            </div>
+
+            <div class="col-md-5">
+              <label for="country" class="form-label">Ciudad</label>
+              <select class="form-select" id="country" required>
+                <option value="">Selecciona...</option>
+                <option>United States</option>
+              </select>
+              <div class="invalid-feedback">
+                Seleccione una ciudad válida.
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="state" class="form-label">Estado</label>
+              <select class="form-select" id="state" required>
+                <option value="">Selecciona...</option>
+                <option>California</option>
+              </select>
+              <div class="invalid-feedback">
+                Seleccione un estado válido.
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="zip" class="form-label">C.P</label>
+              <input type="text" class="form-control" id="zip" placeholder="" required>
+              <div class="invalid-feedback">
+                Código postal obligatorio.
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <h4 class="mb-3">Pago</h4>
+
+          <div class="my-3">
+            <div class="form-check">
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+              <label class="form-check-label" for="credit">Tarjeta de crédito</label>
+            </div>
+            <div class="form-check">
+              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="debit">Tarjeta de debito</label>
+            </div>
+            <div class="form-check">
+              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="cc-name" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="cc-name" placeholder="" required>
+              <small class="text-muted">Nombre completo como se muestra en la tarjeta</small>
+              <div class="invalid-feedback">
+                Nombre es obligatorio
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="cc-number" class="form-label">Número de tarjeta</label>
+              <input type="text" class="form-control" id="cc-number" placeholder="" required>
+              <div class="invalid-feedback">
+                Número de tarjeta es obligatorio.
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-expiration" class="form-label">Vence</label>
+              <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+              <div class="invalid-feedback">
+                Fecha de vencimiento es obligatoria.
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-cvv" class="form-label">CVV</label>
+              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+              <div class="invalid-feedback">
+                CVV es obligatorio.
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <button onclick="Pago()" class="w-100 btn btn-primary btn-lg" >Procesar Pago</button>
+        </form>
+      </div>
+      
+    </div>
+    
+   
+
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2021 Tienda Virtual Tecla</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacidad</a></li>
+      <li class="list-inline-item"><a href="#">Terminos y Condiciones</a></li>
+      <li class="list-inline-item"><a href="#">Soporte</a></li>
+    </ul>
+  </footer>
+</div>
+
+
+    
+    <script src="/front-end/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="check-out.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script> 
+
+      <!-- <script src="form-validation.js"></script> -->
+  </body>
+</html>
